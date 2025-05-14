@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback - Sistema de Reservas</title>
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+  <header class="bg-success text-white p-3">
+    <div class="container">
+      <h1>Deixe seu Feedback</h1>
+      <p class="mb-0">Sua opinião é muito importante para melhorarmos nossos serviços</p>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Início</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="parques.html">Parques</a></li>
+          <li class="nav-item"><a class="nav-link" href="reserva.html">Reservar</a></li>
+          <li class="nav-item"><a class="nav-link active" href="feedback.html">Feedback</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <h2>Envie sua opinião</h2>
+    <p>Nos diga o que achou do nosso sistema ou das áreas verdes que você visitou.</p>
+
+    <form action="/feedback" method="POST">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Seu nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" required />
+      </div>
+      <div class="mb-3">
+        <label for="mensagem" class="form-label">Mensagem</label>
+        <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Enviar Feedback</button>
+    </form>
+  </main>
+
+  <footer class="bg-light text-center text-muted p-3 border-top">
+    <small>&copy; 2025 Sistema de Reservas de Áreas Verdes</small>
+  </footer>
+</body>
+</html>
