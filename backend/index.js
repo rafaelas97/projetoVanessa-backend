@@ -3,6 +3,8 @@ const path = require("path");
 const cors = require("cors");
 const app = express();
 
+require('./src/database/connection');
+
 app.use(cors());
 app.use(express.json()); // Permite JSON no corpo das requisições
 app.use(express.static(path.join(__dirname, "../frontend/src")));
