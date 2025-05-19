@@ -33,15 +33,22 @@
     <h2>Envie sua opinião</h2>
     <p>Nos diga o que achou do nosso sistema ou das áreas verdes que você visitou.</p>
 
-    <form action="/feedback" method="POST">
+    <form id="feedbackForm">
       <div class="mb-3">
         <label for="nome" class="form-label">Seu nome</label>
         <input type="text" class="form-control" id="nome" name="nome" required />
       </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Seu e-mail</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+
       <div class="mb-3">
         <label for="mensagem" class="form-label">Mensagem</label>
         <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required></textarea>
       </div>
+
       <button type="submit" class="btn btn-success">Enviar Feedback</button>
     </form>
   </main>
@@ -49,5 +56,34 @@
   <footer class="bg-light text-center text-muted p-3 border-top">
     <small>&copy; 2025 Sistema de Reservas de Áreas Verdes</small>
   </footer>
+  <script>
+    const form = document.getElementById("feedbackForm");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      try {
+        const response = await fetch("/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ nome, email, mensagem }) 
+      });
+
+      const resultado = await response.json();
+      alert(resultado.mensagem);
+
+      form.reset();
+    } catch (error) {
+      alert("Erro ao enviar feedback.");
+      console.error(error);
+    }
+    });
+  </script>
+
 </body>
 </html>
