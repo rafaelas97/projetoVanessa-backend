@@ -3,7 +3,7 @@ const router = express.Router();
 const reservaController = require('../controllers/reservaController');
 
 router.get('/reservas', reservaController.getReserva);
-router.post('/reservas', reservaController.createReserva);
-router.delete('/:id', controller.deleteReserva);
+router.post('/reservas', reservaController.addReserva);
+router.delete('/reservas/:id', reservaController.deleteReserva);
 
 module.exports = router;

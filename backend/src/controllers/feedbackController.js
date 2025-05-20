@@ -24,3 +24,16 @@ exports.addFeedback = (req, res) => {
     res.status(201).json({ id: result.insertId, nome, email, mensagem });
   });
 };
+
+exports.deleteFeedback = (req, res) => {
+  const { id } = req.params;
+  const query = 'DELETE FROM feedback WHERE id = ?';
+
+  connection.query(query, [id], (err, result) => {
+    if (err) {
+      console.error('Erro ao deletar feedback:', err.message);
+      return res.status(500).json({ erro: 'Erro ao deletar feedback' });
+    }
+    res.status(200).json({ mensagem: 'Feedback deletado com sucesso!' });
+  });
+};

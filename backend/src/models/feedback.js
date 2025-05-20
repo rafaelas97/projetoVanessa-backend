@@ -1,15 +1,15 @@
-const db = require('../database/connection');
+const connection = require('../database/connection');
 
-const Feedback = {
+const feedback = {
     getAll: (callback) => {
-        db.query('SELECT * FROM feedbacks', callback);
+        connection.query('SELECT * FROM feedback', callback);
     },
     create: (data, callback) => {
-        db.query('INSERT INTO feedbacks SET ?', data, callback);
+        connection.query('INSERT INTO feedback SET ?', data, callback);
     },
     delete: (id, callback) => {
-        db.query('DELETE FROM feedbacks WHERE id = ?', [id], callback);
+        connection.query('DELETE FROM feedback WHERE id = ?', [id], callback);
     }
 };
 
-module.exports = Feedback;
+module.exports = feedback;

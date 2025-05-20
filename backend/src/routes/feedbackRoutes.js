@@ -4,6 +4,6 @@ const feedbackController = require('../controllers/feedbackController');
 
 router.get('/feedback', feedbackController.getFeedback);
 router.post('/feedback', feedbackController.addFeedback);
-router.delete('/:id', controller.deleteFeedback);
+router.delete('/feedback/:id', feedbackController.deleteFeedback);
 
 module.exports = router;

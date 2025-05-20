@@ -3,6 +3,14 @@ const path = require("path");
 const cors = require("cors");
 const app = express();
 
+const feedbackRoutes = require('./src/routes/feedbackRoutes');
+const reservaRoutes = require('./src/routes/reservaRoutes');
+const parqueRoutes = require('./src/routes/parqueRoutes');
+
+app.use('/api', feedbackRoutes);
+app.use('/api', reservaRoutes);
+app.use('/api', parqueRoutes);
+
 require('./src/database/connection');
 
 app.use(cors());
@@ -29,12 +37,8 @@ app.get("/feedback", (req, res) => {
 
 // ROTA POST para receber reservas
 app.post("/reserva", (req, res) => {
-  const { nome, parque, data, horario } = req.body;
+  const { nome, parque, data_reserva, horario } = req.body;
   console.log("Reserva recebida:", req.body);
-  console.log("Nome:", nome);
-  console.log("Parque:", parque);
-  console.log("Data:", data);
-  console.log("Horário:", horario);
 
   res.status(200).json({ mensagem: "Reserva recebida com sucesso!" });
 });
@@ -45,8 +49,8 @@ app.listen(PORT, () => {
 });
 
 app.post("/feedback", (req, res) => {
-  const { nome, mensagem } = req.body;
-  console.log("Feedback recebido:", { nome, mensagem });
+  const { nome, email, mensagem } = req.body;
+  console.log("Feedback recebido:", req.body);
 
   res.status(200).json({ mensagem: "Feedback recebido com sucesso!" });
 });
